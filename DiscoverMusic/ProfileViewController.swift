@@ -1,13 +1,13 @@
 //
-//  ViewController.swift
+//  ProfileViewController.swift
 //  DiscoverMusic
 //
-//  Created by Chang Zeng on 5/30/21.
+//  Created by Hailun Zhang on 6/1/21.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,4 +16,3 @@ class ViewController: UIViewController {
 
 
 }
-
