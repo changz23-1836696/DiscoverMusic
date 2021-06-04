@@ -27,18 +27,30 @@
         <!--Detail-->
         <scene sceneID="xDV-HM-jqL">
             <objects>
-                <viewController title="Detail" id="rD2-EG-vZL" sceneMemberID="viewController">
+                <viewController title="Detail" id="rD2-EG-vZL" customClass="DetailViewController" customModule="DiscoverMusic" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hgz-yq-b2N">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="hzq-Ba-cTk">
+                                <rect key="frame" x="76" y="78" width="262" height="253"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="StarRatingView" id="C6E-Nz-2xI">
+                                <rect key="frame" x="76" y="357" width="262" height="78"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="H6a-Tp-UYM"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="swk-HE-Az3"/>
+                    <navigationItem key="navigationItem" id="Z2u-Tm-2a8"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bOd-C0-yIK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-291" y="-520"/>
+            <point key="canvasLocation" x="-291.304347826087" y="-520.3125"/>
         </scene>
         <!--Profile-->
         <scene sceneID="gbF-18-Cfr">
@@ -84,11 +96,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" id="rEd-4z-xKJ">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" id="1qu-pE-0wZ">
                                 <rect key="frame" x="19" y="212" width="375" height="572"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -105,15 +112,15 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="358" height="66"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="15R-fZ-0xL">
-                                                            <rect key="frame" x="49" y="23" width="87" height="21"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="15R-fZ-0xL">
+                                                            <rect key="frame" x="13" y="23" width="198" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FJl-Js-qoZ">
-                                                            <rect key="frame" x="237" y="23" width="98" height="21"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FJl-Js-qoZ">
+                                                            <rect key="frame" x="236" y="23" width="98" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -124,6 +131,7 @@
                                                 <connections>
                                                     <outlet property="author" destination="FJl-Js-qoZ" id="8qg-Ad-s1G"/>
                                                     <outlet property="name" destination="15R-fZ-0xL" id="Wpm-ag-uuk"/>
+                                                    <segue destination="rD2-EG-vZL" kind="show" id="EEg-ja-dBd"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -133,12 +141,26 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="w6b-Qo-Fkd"/>
                             </scrollView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Results..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UW0-BT-z5k">
-                                <rect key="frame" x="19" y="131" width="178" height="53"/>
+                                <rect key="frame" x="19" y="130" width="178" height="53"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Search songs" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2uW-x0-yYK">
+                                <rect key="frame" x="33" y="58" width="273" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NXm-z2-oUc">
+                                <rect key="frame" x="313" y="58" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Search"/>
+                                <connections>
+                                    <action selector="search:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tdg-EF-mbO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -146,7 +168,7 @@
                     <tabBarItem key="tabBarItem" title="Item" id="DBL-OK-APU"/>
                     <connections>
                         <outlet property="scrollView" destination="1qu-pE-0wZ" id="lKG-C6-y0t"/>
-                        <outlet property="searchMusic" destination="rEd-4z-xKJ" id="xs0-SV-SLq"/>
+                        <outlet property="searchBar" destination="2uW-x0-yYK" id="0vg-sW-HGY"/>
                         <outlet property="tableView" destination="VBL-pz-XTj" id="UzK-hA-al1"/>
                     </connections>
                 </viewController>
@@ -155,6 +177,9 @@
             <point key="canvasLocation" x="-1933.3333333333335" y="87.723214285714278"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="EEg-ja-dBd"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
