@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import FirebaseCore
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 struct SearchResult: Codable{
     let resultCount: UInt
@@ -26,9 +29,12 @@ class SongResultCell : UITableViewCell {
 }
 
 class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
+    public var db: Firestore!
     static let CELL_STYLE = "songCellType"
     public var songs : [String] = []
     public var authors : [String] = []
+    public var rating: [UInt] = []
+    public var searchTime: [UInt] = []
 
 
     @IBOutlet weak var tableView: UITableView!
@@ -73,107 +79,96 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func fetchData(_ fetchString: String) {
-        NSLog("\(String(describing: fetchString))")
-        let url = URL(string: fetchString)
-        let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-        let fileName = "data.json"
-        guard url != nil else {
-            self.alertMessage(mess: "Empty JSON Error")
-            return
-        }
-        if Reachability().isInternetAvailable() {
-            let session = URLSession.shared
-                let dataTask = session.dataTask(with: url!) {
-                (data, response, error) in
-                if error == nil && data != nil {
-                    do {
-                        let decoder = JSONDecoder()
-                        let newSongs = try decoder.decode(SearchResult.self, from: data!)
-//                        self.defaults.set(fetchString, forKey: "url")
-//                        self.defaults.set(data, forKey:"data")
-                        self.resultInfo = newSongs
-                        self.songs = []
-                        self.authors = []
-                        for song in newSongs.results {
-                            self.songs.append(song.trackName)
-                            self.authors.append(song.artistName)
-                        }
-                        if directory != nil {
-                            let filePath = directory?.appendingPathComponent(fileName)
-                            do {
-                                try data!.write(to: filePath!, options: Data.WritingOptions.atomic)
-                            }
-                            catch { self.alertMessage(mess: "cannot save data")}
-                        } else {
-                            self.alertMessage(mess: "cannot download data")
-                        }
-                    } catch{
-                        self.alertMessage(mess: "Error on Parsing Data")
-                    }
-                }
+        db.collection("MusicCollections").document(fetchString).getDocument { (querySnapshot, err) in
+            if let document = querySnapshot, document.exists {
+                self.songs.append(document.documentID)
+                self.authors.append(document.data()?["artist"] as! String)
+                self.rating.append(document.data()?["rating"] as! UInt)
+                self.searchTime.append(document.data()?["searchTime"] as! UInt)
                 DispatchQueue.main.async{
                     self.tableView.reloadData()
                 }
-            }
-            dataTask.resume()
-        } else {
-            alertMessage(mess: "Cannot connect to internet, loading local data")
-//            DispatchQueue.global(qos: .userInitiated).async {
-//                if directory != nil {
-//                    let fileurl = directory?.appendingPathComponent(fileName)
-//                    var data: Data? = nil
+            } else {
+                self.alertMessage(mess: "Song not found")
+                }
+        }
+//        NSLog("\(String(describing: fetchString))")
+//        let url = URL(string: fetchString)
+//
+//        let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+//        let fileName = "data.json"
+//        guard url != nil else {
+//            self.alertMessage(mess: "Empty JSON Error")
+//            return
+//        }
+//        if Reachability().isInternetAvailable() {
+//            let session = URLSession.shared
+//                let dataTask = session.dataTask(with: url!) {
+//                (data, response, error) in
+//                if error == nil && data != nil {
 //                    do {
-//                        try data = Data(contentsOf: fileurl!)
-//                    }
-//                    catch { NSLog(error.localizedDescription) }
-//                    if data != nil && data!.count > 0 {
 //                        let decoder = JSONDecoder()
-//                        do {
-//                            let newQuiz = try decoder.decode([Quiz].self, from: data!)
-//                            DispatchQueue.main.async {
-////                                self.defaults.set(fetchString, forKey: "url")
-////                                self.defaults.set(data, forKey:"data")
-//                                self.questionInfo = newQuiz
-//                                self.quizzes = []
-//                                self.subtitle = []
-//                                for quiz in newQuiz {
-//                                    self.quizzes.append(quiz.title)
-//                                    self.subtitle.append(quiz.desc)
-//                                }
-//                                self.tableView?.reloadData()
-//                            }
-//                        } catch {
-//                            self.alertMessage(mess: "cannot load data from local")
+//                        let newSongs = try decoder.decode(SearchResult.self, from: data!)
+////                        self.defaults.set(fetchString, forKey: "url")
+////                        self.defaults.set(data, forKey:"data")
+//                        self.resultInfo = newSongs
+//                        self.songs = []
+//                        self.authors = []
+//                        for song in newSongs.results {
+//                            self.songs.append(song.trackName)
+//                            self.authors.append(song.artistName)
 //                        }
-//                    }
-//                    else {
-//                        self.alertMessage(mess: "No internet and no local data")
+//                        if directory != nil {
+//                            let filePath = directory?.appendingPathComponent(fileName)
+//                            do {
+//                                try data!.write(to: filePath!, options: Data.WritingOptions.atomic)
+//                            }
+//                            catch { self.alertMessage(mess: "cannot save data")}
+//                        } else {
+//                            self.alertMessage(mess: "cannot download data")
+//                        }
+//                    } catch{
+//                        self.alertMessage(mess: "Error on Parsing Data")
 //                    }
 //                }
+//                DispatchQueue.main.async{
+//                    self.tableView.reloadData()
+//                }
 //            }
-        }
+//            dataTask.resume()
+//        } else {
+//            alertMessage(mess: "Cannot connect to internet")
+//        }
     }
     
     @IBAction func search(_ sender: UIButton) {
         let song = String(searchBar.text ?? "")
         NSLog((String(describing: song)))
-        fetchData("https://itunes.apple.com/search?limit=10&term=\(song)")
+        fetchData(song)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let indexPath = tableView.indexPathForSelectedRow{
             let questionSet = indexPath.row
             let questionView = segue.destination as! DetailViewController
-//            questionView.sectionNum = questionSet
-//            questionView.questionData = questionInfo
-//            questionView.url = urlString
+            questionView.song = songs[questionSet]
+            questionView.author = authors[questionSet]
+            questionView.rating = rating[questionSet]
         }
+    }
+    
+    private func getCollection() {
+        db.collection("")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
+        songs = []
+        authors = []
+        rating = []
+        searchTime = []
         scrollView.delegate = self
         self.scrollView.bounces = false
         self.tableView.bounces = true
@@ -181,6 +176,9 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.tableView.register(UINib(nibName: "SongResultCell", bundle: nil), forCellReuseIdentifier: "SongResultCell")
         tableView.dataSource = self
         tableView.delegate = self
+        let settings = FirestoreSettings()
+        Firestore.firestore().settings = settings
+        db = Firestore.firestore()
     }
     
     

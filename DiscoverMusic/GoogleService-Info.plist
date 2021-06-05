@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>175744442678-amt07b5m08rvqkhd0n730r5ief5ldj32.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.175744442678-amt07b5m08rvqkhd0n730r5ief5ldj32</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCd5pjQ6SfC40t0bmsLI9oG5Ep2oE7q7hM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>175744442678</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>-49groupB.DiscoverMusic</string>
+	<key>PROJECT_ID</key>
+	<string>discovermusic-3b829</string>
+	<key>STORAGE_BUCKET</key>
+	<string>discovermusic-3b829.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:175744442678:ios:5739621d8040d5ad74d397</string>
+</dict>
+</plist>
