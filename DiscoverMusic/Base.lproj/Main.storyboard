@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rc2-iT-pCJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rc2-iT-pCJ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,36 +11,98 @@
         <!--Rating-->
         <scene sceneID="ZXM-dl-wAw">
             <objects>
-                <viewController title="Rating" id="gdR-IJ-3ou" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="zYO-8b-vCB">
+                <viewController title="Rating" id="gdR-IJ-3ou" customClass="RatingViewController" customModule="DiscoverMusic" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zYO-8b-vCB" customClass="rating">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y06-X7-Sjz" userLabel="star">
+                                <rect key="frame" x="241" y="243" width="29" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Button" image="star" catalog="system"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uRG-OQ-OLO" userLabel="star">
+                                <rect key="frame" x="216" y="243" width="29" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Button" image="star" catalog="system"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lpA-4f-kYk" userLabel="star">
+                                <rect key="frame" x="191" y="243" width="29" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Button" image="star" catalog="system"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GwK-k3-a2R" userLabel="star">
+                                <rect key="frame" x="140" y="243" width="29" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Button" image="star" catalog="system"/>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0eW-bY-ONS">
+                                <rect key="frame" x="96" y="363" width="218" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iqa-Qh-fyE">
+                                <rect key="frame" x="69" y="496" width="237" height="187"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Music Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2m0-0s-PzQ">
+                                <rect key="frame" x="47" y="115" width="95" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="852-06-fSB" userLabel="star">
+                                <rect key="frame" x="166" y="243" width="29" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Button" image="star" catalog="system"/>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="euu-xx-Y13"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="qy2-f0-CcB"/>
+                    <tabBarItem key="tabBarItem" title="rating" id="qy2-f0-CcB"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yLa-ce-k0Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-290" y="88"/>
+            <point key="canvasLocation" x="-291.304347826087" y="87.723214285714278"/>
         </scene>
         <!--Detail-->
         <scene sceneID="xDV-HM-jqL">
             <objects>
                 <viewController title="Detail" id="rD2-EG-vZL" customClass="DetailViewController" customModule="DiscoverMusic" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hgz-yq-b2N">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="hzq-Ba-cTk">
-                                <rect key="frame" x="76" y="78" width="262" height="253"/>
+                                <rect key="frame" x="76" y="83" width="262" height="269"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="StarRatingView" id="C6E-Nz-2xI">
-                                <rect key="frame" x="76" y="357" width="262" height="78"/>
+                            <view contentMode="scaleToFill" restorationIdentifier="StarRatingView" id="C6E-Nz-2xI">
+                                <rect key="frame" x="76" y="380" width="262" height="83"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8JO-Mi-hbU">
+                                <rect key="frame" x="184" y="712" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="uxx-ur-J7U" kind="show" id="A3N-03-fqp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="H6a-Tp-UYM"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -51,6 +113,110 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bOd-C0-yIK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-291.304347826087" y="-520.3125"/>
+        </scene>
+        <!--Rating View Controller-->
+        <scene sceneID="EEx-eM-6wv">
+            <objects>
+                <viewController id="uxx-ur-J7U" customClass="RatingViewController" customModule="DiscoverMusic" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fEA-dC-Uax">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Music Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6M5-lD-Q7U">
+                                <rect key="frame" x="20" y="20" width="219" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="41"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rate this music!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2U-sZ-wGV">
+                                <rect key="frame" x="20" y="115" width="311" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6fs-zs-RR1">
+                                <rect key="frame" x="20" y="77" width="182" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n6m-L9-xa6">
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="kbR-2I-8bX"/>
+                                            <constraint firstAttribute="height" constant="30" id="wOB-uf-oHG"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="star"/>
+                                        <connections>
+                                            <action selector="buttonTapped:" destination="uxx-ur-J7U" eventType="touchUpInside" id="tyu-B2-mcd"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0TO-h1-28I">
+                                        <rect key="frame" x="38" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="lnM-oD-HTN"/>
+                                            <constraint firstAttribute="height" constant="30" id="o1Z-Ts-OZl"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="star"/>
+                                        <connections>
+                                            <action selector="buttonTapped:" destination="uxx-ur-J7U" eventType="touchUpInside" id="MT9-1d-pVS"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R55-ce-6FD">
+                                        <rect key="frame" x="76" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="KgW-oE-gNR"/>
+                                            <constraint firstAttribute="width" constant="30" id="zOm-tA-a9A"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="star"/>
+                                        <connections>
+                                            <action selector="buttonTapped:" destination="uxx-ur-J7U" eventType="touchUpInside" id="CjD-ey-rLZ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ep5-B5-zNQ">
+                                        <rect key="frame" x="114" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Zzb-Ks-3XQ"/>
+                                            <constraint firstAttribute="width" constant="30" id="oBz-9R-Ktf"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="star"/>
+                                        <connections>
+                                            <action selector="buttonTapped:" destination="uxx-ur-J7U" eventType="touchUpInside" id="fnB-IA-Dew"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8eb-kx-esR">
+                                        <rect key="frame" x="152" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="0VX-sd-zsh"/>
+                                            <constraint firstAttribute="width" constant="30" id="Eb2-vf-QOR"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="star"/>
+                                        <connections>
+                                            <action selector="buttonTapped:" destination="uxx-ur-J7U" eventType="touchUpInside" id="KV8-Ye-PcO"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="593-cc-3HC"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6fs-zs-RR1" firstAttribute="leading" secondItem="593-cc-3HC" secondAttribute="leading" constant="20" id="Ovn-MB-EkZ"/>
+                            <constraint firstItem="6fs-zs-RR1" firstAttribute="top" secondItem="593-cc-3HC" secondAttribute="top" constant="77" id="f7k-99-bjG"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="EoG-oh-31B"/>
+                    <connections>
+                        <outlet property="ratingMessage" destination="j2U-sZ-wGV" id="oh4-Yo-LVX"/>
+                        <outletCollection property="starButtons" destination="n6m-L9-xa6" collectionClass="NSMutableArray" id="ak2-zf-4Lc"/>
+                        <outletCollection property="starButtons" destination="0TO-h1-28I" collectionClass="NSMutableArray" id="SIx-FZ-4I6"/>
+                        <outletCollection property="starButtons" destination="R55-ce-6FD" collectionClass="NSMutableArray" id="MbV-uX-H8H"/>
+                        <outletCollection property="starButtons" destination="Ep5-B5-zNQ" collectionClass="NSMutableArray" id="qtt-n3-MnP"/>
+                        <outletCollection property="starButtons" destination="8eb-kx-esR" collectionClass="NSMutableArray" id="juU-16-3Uf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Ln-ZY-bXL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="534.78260869565224" y="-506.25"/>
         </scene>
         <!--Profile-->
         <scene sceneID="gbF-18-Cfr">
@@ -106,7 +272,7 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="songCellType" rowHeight="66" id="6jj-sf-q8w" customClass="SongResultCell" customModule="DiscoverMusic">
-                                                <rect key="frame" x="0.0" y="28" width="358" height="66"/>
+                                                <rect key="frame" x="0.0" y="24.5" width="358" height="66"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6jj-sf-q8w" id="noh-il-UH3" customClass="SongResultCell" customModule="DiscoverMusic">
                                                     <rect key="frame" x="0.0" y="0.0" width="358" height="66"/>
@@ -178,9 +344,14 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="EEg-ja-dBd"/>
+        <segue reference="BNP-V6-Cq5"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="star" width="128" height="128"/>
+        <image name="star" catalog="system" width="128" height="116"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
