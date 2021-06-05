@@ -15,7 +15,7 @@ struct post {
         postText = text
     }
     func printPost(){
-        print("this is music is commented as '\(postText)' with as rating of \(rating)")
+        print("this is music is commented as '\(postText)' with as rating of \(rating)") 
     }
 }
 
