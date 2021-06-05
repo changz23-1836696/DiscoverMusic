@@ -129,15 +129,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rate this music!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2U-sZ-wGV">
-                                <rect key="frame" x="20" y="115" width="311" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6fs-zs-RR1">
-                                <rect key="frame" x="20" y="77" width="182" height="30"/>
+                                <rect key="frame" x="20" y="100" width="182" height="30"/>
                                 <subviews>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n6m-L9-xa6">
                                         <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -196,17 +189,48 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rate this music!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2U-sZ-wGV">
+                                <rect key="frame" x="20" y="138" width="311" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Leave a comment here:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Se-fT-6jN">
+                                <rect key="frame" x="20" y="193" width="311" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" keyboardDismissMode="onDrag" text="Leave a comment" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="d0c-dA-e3I">
+                                <rect key="frame" x="20" y="222" width="374" height="155"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Wk-Yl-t8e">
+                                <rect key="frame" x="333" y="385" width="61" height="61"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="up-arrow"/>
+                                <connections>
+                                    <action selector="uploadButton:" destination="uxx-ur-J7U" eventType="touchUpInside" id="C89-Af-KmG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="593-cc-3HC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6fs-zs-RR1" firstAttribute="leading" secondItem="593-cc-3HC" secondAttribute="leading" constant="20" id="Ovn-MB-EkZ"/>
-                            <constraint firstItem="6fs-zs-RR1" firstAttribute="top" secondItem="593-cc-3HC" secondAttribute="top" constant="77" id="f7k-99-bjG"/>
+                            <constraint firstItem="6fs-zs-RR1" firstAttribute="top" secondItem="593-cc-3HC" secondAttribute="top" constant="100" id="f7k-99-bjG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="EoG-oh-31B"/>
                     <connections>
                         <outlet property="ratingMessage" destination="j2U-sZ-wGV" id="oh4-Yo-LVX"/>
+                        <outlet property="textView" destination="d0c-dA-e3I" id="YRH-PP-tYA"/>
                         <outletCollection property="starButtons" destination="n6m-L9-xa6" collectionClass="NSMutableArray" id="ak2-zf-4Lc"/>
                         <outletCollection property="starButtons" destination="0TO-h1-28I" collectionClass="NSMutableArray" id="SIx-FZ-4I6"/>
                         <outletCollection property="starButtons" destination="R55-ce-6FD" collectionClass="NSMutableArray" id="MbV-uX-H8H"/>
@@ -349,11 +373,15 @@
     <resources>
         <image name="star" width="128" height="128"/>
         <image name="star" catalog="system" width="128" height="116"/>
+        <image name="up-arrow" width="256" height="256"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
