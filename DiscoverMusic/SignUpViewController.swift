@@ -78,7 +78,8 @@ class SignUpViewController: UIViewController {
                     
 
                     UserInfo.sharedInstance.uid = result!.user.uid
-                    self.performSegue(withIdentifier: "signUptoProfile", sender: self)
+                    self.showProfile()
+
                 }
                 
             }
