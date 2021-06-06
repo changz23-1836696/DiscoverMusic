@@ -12,6 +12,10 @@
 		0065C2CA266B972A00661B26 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0065C2C9266B972A00661B26 /* GoogleService-Info.plist */; };
 		008BBFF02665EC3300A66558 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008BBFEF2665EC3300A66558 /* ProfileViewController.swift */; };
 		0E63FF9B04705FAA61BC0279 /* Pods_DiscoverMusic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2CF602D37BFF4CEED9055E /* Pods_DiscoverMusic.framework */; };
+		17D0989E266C57B700DC32B5 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D0989D266C57B700DC32B5 /* SignUpViewController.swift */; };
+		17D098A3266C57CB00DC32B5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D098A2266C57CB00DC32B5 /* LoginViewController.swift */; };
+		17D098BB266C87F700DC32B5 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D098BA266C87F700DC32B5 /* UserInfo.swift */; };
+		17D098BF266C92D200DC32B5 /* LoggedInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D098BE266C92D200DC32B5 /* LoggedInViewController.swift */; };
 		5AA61C537C187694C20953AC /* Pods_DiscoverMusicTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA83A1F73697D5AF7C4BEEBF /* Pods_DiscoverMusicTests.framework */; };
 		870D69B4CFF75E73CC69E035 /* Pods_DiscoverMusic_DiscoverMusicUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C3A7C72E8FEE8667915B65 /* Pods_DiscoverMusic_DiscoverMusicUITests.framework */; };
 		EEAB7D62266AB245004B6462 /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAB7D61266AB245004B6462 /* RatingViewController.swift */; };
@@ -49,6 +53,10 @@
 		0065C2C9266B972A00661B26 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		008BBFEF2665EC3300A66558 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		01BCBFF63B3E68254003BFF7 /* Pods-DiscoverMusicTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscoverMusicTests.release.xcconfig"; path = "Target Support Files/Pods-DiscoverMusicTests/Pods-DiscoverMusicTests.release.xcconfig"; sourceTree = "<group>"; };
+		17D0989D266C57B700DC32B5 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		17D098A2266C57CB00DC32B5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		17D098BA266C87F700DC32B5 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		17D098BE266C92D200DC32B5 /* LoggedInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInViewController.swift; sourceTree = "<group>"; };
 		4D1B6BC2AB739E0584B59EE5 /* Pods-DiscoverMusic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscoverMusic.debug.xcconfig"; path = "Target Support Files/Pods-DiscoverMusic/Pods-DiscoverMusic.debug.xcconfig"; sourceTree = "<group>"; };
 		56C3A7C72E8FEE8667915B65 /* Pods_DiscoverMusic_DiscoverMusicUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DiscoverMusic_DiscoverMusicUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F1F8720C8ABB45FA62F5047 /* Pods-DiscoverMusic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscoverMusic.release.xcconfig"; path = "Target Support Files/Pods-DiscoverMusic/Pods-DiscoverMusic.release.xcconfig"; sourceTree = "<group>"; };
@@ -103,6 +111,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		17D098B5266C77E900DC32B5 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				17D098BA266C87F700DC32B5 /* UserInfo.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		47320159254056A886207609 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +173,7 @@
 				EECBA3252664AFE8000A44EB /* SearchViewController.swift */,
 				0065C294266A468900661B26 /* DetailViewController.swift */,
 				EECBA3272664AFE8000A44EB /* Main.storyboard */,
+				17D098BE266C92D200DC32B5 /* LoggedInViewController.swift */,
 				EEAB7D63266AFD1D004B6462 /* RatingController.swift */,
 				EEAB7D61266AB245004B6462 /* RatingViewController.swift */,
 				0065C28F266A385500661B26 /* Reachability.swift */,
@@ -164,6 +181,9 @@
 				EECBA32C2664AFE9000A44EB /* LaunchScreen.storyboard */,
 				EECBA32F2664AFE9000A44EB /* Info.plist */,
 				008BBFEF2665EC3300A66558 /* ProfileViewController.swift */,
+				17D0989D266C57B700DC32B5 /* SignUpViewController.swift */,
+				17D098A2266C57CB00DC32B5 /* LoginViewController.swift */,
+				17D098B5266C77E900DC32B5 /* Helpers */,
 			);
 			path = DiscoverMusic;
 			sourceTree = "<group>";
@@ -428,11 +448,15 @@
 				EECBA3262664AFE8000A44EB /* SearchViewController.swift in Sources */,
 				EECBA3222664AFE8000A44EB /* AppDelegate.swift in Sources */,
 				EEAB7D64266AFD1D004B6462 /* RatingController.swift in Sources */,
+				17D098BF266C92D200DC32B5 /* LoggedInViewController.swift in Sources */,
 				008BBFF02665EC3300A66558 /* ProfileViewController.swift in Sources */,
 				0065C295266A468900661B26 /* DetailViewController.swift in Sources */,
 				0065C290266A385500661B26 /* Reachability.swift in Sources */,
+				17D0989E266C57B700DC32B5 /* SignUpViewController.swift in Sources */,
 				EECBA3242664AFE8000A44EB /* SceneDelegate.swift in Sources */,
+				17D098A3266C57CB00DC32B5 /* LoginViewController.swift in Sources */,
 				EEAB7D62266AB245004B6462 /* RatingViewController.swift in Sources */,
+				17D098BB266C87F700DC32B5 /* UserInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,7 @@ target 'DiscoverMusic' do
   # Pods for DiscoverMusic
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
+  pod 'Firebase/Auth'
 
 # add pods for desired Firebase products
 # https://firebase.google.com/docs/ios/setup#available-pods
