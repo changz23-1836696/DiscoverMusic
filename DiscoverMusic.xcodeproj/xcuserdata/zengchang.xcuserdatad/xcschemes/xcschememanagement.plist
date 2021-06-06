@@ -7,7 +7,25 @@
 		<key>DiscoverMusic.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>4</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>EECBA31D2664AFE8000A44EB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EECBA3332664AFE9000A44EB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EECBA33E2664AFE9000A44EB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
