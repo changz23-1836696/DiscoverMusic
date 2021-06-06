@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 struct post {
     var rating: Int
@@ -17,6 +18,16 @@ struct post {
     func printPost(){
         print("this is music is commented as '\(postText)' with as rating of \(rating)") 
     }
+    func uploadPost(Ref: CollectionReference, userID: String, MusicID: String){
+        let dataToSave : [String: Any] = ["comment": postText, "rating": rating, "musicID": MusicID, "userID": userID]
+        Ref.addDocument(data: dataToSave) {(error) in
+            if let error = error {
+                print("Oh no! Got an error: \(error.localizedDescription)")
+            } else {
+                print("Data have been saved!")
+            }
+        }
+    }
 }
 
 class RatingViewController: UIViewController {
@@ -25,9 +36,11 @@ class RatingViewController: UIViewController {
     @IBOutlet weak var ratingMessage: UILabel!
     @IBOutlet weak var textView: UITextView!
     var newRate:Int = 0
+    var docRef : CollectionReference!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        docRef = Firestore.firestore().collection("CommentHistory")
     }
     
     
@@ -49,6 +62,16 @@ class RatingViewController: UIViewController {
     @IBAction func uploadButton(_ sender: UIButton) {
         let newPost = post(rate: newRate, text: textView.text)
         newPost.printPost()
+        newPost.uploadPost(Ref: docRef, userID: "test uid", MusicID: "test mid")
+//        let dataToSave: [String: Any] = ["rating": 1, "comment": "test comment message"]
+//        docRef = Firestore.firestore().document("CommentHistory/test")
+//        docRef.setData(dataToSave) {(error) in
+//            if let error = error {
+//                print("Oh no! Got an error: \(error.localizedDescription)")
+//            } else {
+//                print("Data have been saved!")
+//            }
+//        }
     }
     /*
     // MARK: - Navigation
