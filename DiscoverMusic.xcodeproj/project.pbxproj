@@ -15,7 +15,6 @@
 		5AA61C537C187694C20953AC /* Pods_DiscoverMusicTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA83A1F73697D5AF7C4BEEBF /* Pods_DiscoverMusicTests.framework */; };
 		870D69B4CFF75E73CC69E035 /* Pods_DiscoverMusic_DiscoverMusicUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C3A7C72E8FEE8667915B65 /* Pods_DiscoverMusic_DiscoverMusicUITests.framework */; };
 		EEAB7D62266AB245004B6462 /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAB7D61266AB245004B6462 /* RatingViewController.swift */; };
-		EEAB7D64266AFD1D004B6462 /* RatingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAB7D63266AFD1D004B6462 /* RatingController.swift */; };
 		EECBA3222664AFE8000A44EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECBA3212664AFE8000A44EB /* AppDelegate.swift */; };
 		EECBA3242664AFE8000A44EB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECBA3232664AFE8000A44EB /* SceneDelegate.swift */; };
 		EECBA3262664AFE8000A44EB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECBA3252664AFE8000A44EB /* SearchViewController.swift */; };
@@ -57,7 +56,6 @@
 		B8C747BD01B42C741B24EECD /* Pods-DiscoverMusicTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscoverMusicTests.debug.xcconfig"; path = "Target Support Files/Pods-DiscoverMusicTests/Pods-DiscoverMusicTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DA83A1F73697D5AF7C4BEEBF /* Pods_DiscoverMusicTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DiscoverMusicTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEAB7D61266AB245004B6462 /* RatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
-		EEAB7D63266AFD1D004B6462 /* RatingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingController.swift; sourceTree = "<group>"; };
 		EECBA31E2664AFE8000A44EB /* DiscoverMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiscoverMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EECBA3212664AFE8000A44EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EECBA3232664AFE8000A44EB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -157,7 +155,6 @@
 				EECBA3252664AFE8000A44EB /* SearchViewController.swift */,
 				0065C294266A468900661B26 /* DetailViewController.swift */,
 				EECBA3272664AFE8000A44EB /* Main.storyboard */,
-				EEAB7D63266AFD1D004B6462 /* RatingController.swift */,
 				EEAB7D61266AB245004B6462 /* RatingViewController.swift */,
 				0065C28F266A385500661B26 /* Reachability.swift */,
 				EECBA32A2664AFE9000A44EB /* Assets.xcassets */,
@@ -427,7 +424,6 @@
 			files = (
 				EECBA3262664AFE8000A44EB /* SearchViewController.swift in Sources */,
 				EECBA3222664AFE8000A44EB /* AppDelegate.swift in Sources */,
-				EEAB7D64266AFD1D004B6462 /* RatingController.swift in Sources */,
 				008BBFF02665EC3300A66558 /* ProfileViewController.swift in Sources */,
 				0065C295266A468900661B26 /* DetailViewController.swift in Sources */,
 				0065C290266A385500661B26 /* Reachability.swift in Sources */,
