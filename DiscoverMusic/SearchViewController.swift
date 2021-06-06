@@ -35,6 +35,10 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     public var authors : [String] = []
     public var rating: [UInt] = []
     public var searchTime: [UInt] = []
+    public var users : [String] = []
+    public var comments : [String] = []
+    public var ratings : [String] = []
+    
 
 
     @IBOutlet weak var tableView: UITableView!
@@ -88,57 +92,30 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 DispatchQueue.main.async{
                     self.tableView.reloadData()
                 }
+                self.fetchComment(fetchString: fetchString)
             } else {
                 self.alertMessage(mess: "Song not found")
                 }
         }
-//        NSLog("\(String(describing: fetchString))")
-//        let url = URL(string: fetchString)
-//
-//        let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-//        let fileName = "data.json"
-//        guard url != nil else {
-//            self.alertMessage(mess: "Empty JSON Error")
-//            return
-//        }
-//        if Reachability().isInternetAvailable() {
-//            let session = URLSession.shared
-//                let dataTask = session.dataTask(with: url!) {
-//                (data, response, error) in
-//                if error == nil && data != nil {
-//                    do {
-//                        let decoder = JSONDecoder()
-//                        let newSongs = try decoder.decode(SearchResult.self, from: data!)
-////                        self.defaults.set(fetchString, forKey: "url")
-////                        self.defaults.set(data, forKey:"data")
-//                        self.resultInfo = newSongs
-//                        self.songs = []
-//                        self.authors = []
-//                        for song in newSongs.results {
-//                            self.songs.append(song.trackName)
-//                            self.authors.append(song.artistName)
-//                        }
-//                        if directory != nil {
-//                            let filePath = directory?.appendingPathComponent(fileName)
-//                            do {
-//                                try data!.write(to: filePath!, options: Data.WritingOptions.atomic)
-//                            }
-//                            catch { self.alertMessage(mess: "cannot save data")}
-//                        } else {
-//                            self.alertMessage(mess: "cannot download data")
-//                        }
-//                    } catch{
-//                        self.alertMessage(mess: "Error on Parsing Data")
-//                    }
-//                }
-//                DispatchQueue.main.async{
-//                    self.tableView.reloadData()
-//                }
-//            }
-//            dataTask.resume()
-//        } else {
-//            alertMessage(mess: "Cannot connect to internet")
-//        }
+    }
+    
+    func fetchComment(fetchString: String) {
+        print(fetchString)
+        db.collection("CommentHistory").whereField("musicID", isEqualTo: fetchString).getDocuments{ (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                if (querySnapshot!.documents == []) {
+                    print("No comments here")
+                }
+                for document in querySnapshot!.documents {
+                    print("\(document.documentID) => \(document.data())")
+                    self.users.append(document.data()["userID"] as! String)
+                    self.ratings.append(document.data()["rating"] as! String)
+                    self.comments.append(document.data()["comment"] as! String)
+                }
+            }
+    }
     }
     
     @IBAction func search(_ sender: UIButton) {
@@ -154,6 +131,9 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             questionView.song = songs[questionSet]
             questionView.author = authors[questionSet]
             questionView.rating = rating[questionSet]
+            questionView.comments = comments
+            questionView.ratings = ratings
+            questionView.users = users
         }
     }
     
