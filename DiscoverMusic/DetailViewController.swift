@@ -62,8 +62,10 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
 //    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination as! RatingViewController
-        
+        if segue.identifier == "goRating" {
+            let vc = segue.destination as! RatingViewController
+            vc.musicID = self.song
+        }
     }
     
     private func getCollection() {

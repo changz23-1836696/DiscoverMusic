@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 
 struct post {
     var rating: Int
@@ -19,7 +20,7 @@ struct post {
         print("this is music is commented as '\(postText)' with as rating of \(rating)") 
     }
     func uploadPost(Ref: CollectionReference, userID: String, MusicID: String){
-        let dataToSave : [String: Any] = ["comment": postText, "rating": rating, "musicID": MusicID, "userID": userID]
+        let dataToSave : [String: Any] = ["comment": postText, "rating": String(rating), "musicID": MusicID, "userID": userID]
         Ref.addDocument(data: dataToSave) {(error) in
             if let error = error {
                 print("Oh no! Got an error: \(error.localizedDescription)")
@@ -34,13 +35,32 @@ class RatingViewController: UIViewController {
     
     @IBOutlet var starButtons: [UIButton]!
     @IBOutlet weak var ratingMessage: UILabel!
+    @IBOutlet weak var musicName: UILabel!
     @IBOutlet weak var textView: UITextView!
+    
+    var musicID: String = ""
+    var userID: String = ""
     var newRate:Int = 0
     var docRef : CollectionReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        musicName.text = "Music: \(musicID)"
         docRef = Firestore.firestore().collection("CommentHistory")
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        var handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            if let user = user {
+              // The user's ID, unique to the Firebase project.
+              // Do NOT use this value to authenticate with your backend server,
+              // if you have one. Use getTokenWithCompletion:completion: instead.
+                self.userID = user.uid
+                print(self.userID)
+            }
+
+        }
     }
     
     
@@ -62,16 +82,7 @@ class RatingViewController: UIViewController {
     @IBAction func uploadButton(_ sender: UIButton) {
         let newPost = post(rate: newRate, text: textView.text)
         newPost.printPost()
-        newPost.uploadPost(Ref: docRef, userID: "test uid", MusicID: "test mid")
-//        let dataToSave: [String: Any] = ["rating": 1, "comment": "test comment message"]
-//        docRef = Firestore.firestore().document("CommentHistory/test")
-//        docRef.setData(dataToSave) {(error) in
-//            if let error = error {
-//                print("Oh no! Got an error: \(error.localizedDescription)")
-//            } else {
-//                print("Data have been saved!")
-//            }
-//        }
+        newPost.uploadPost(Ref: docRef, userID: userID, MusicID: musicID)
     }
     /*
     // MARK: - Navigation
