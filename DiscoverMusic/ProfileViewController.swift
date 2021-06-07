@@ -17,15 +17,26 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         
-
+        // if already logged in then skip the buttons and jump directly to user info
+        if !UserInfo.sharedInstance.uid.isEmpty {
+            let loggedInViewController = self.storyboard?.instantiateViewController(identifier: "loggedInVC") as? LoggedInViewController
+//            self.view.window?.rootViewController = loggedInViewController
+//            self.view.window?.makeKeyAndVisible()
+            self.present(loggedInViewController!, animated: true, completion: nil)
+        }
         
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
 
+
+
+
+
         
     }
 
+    
 
 
 }
