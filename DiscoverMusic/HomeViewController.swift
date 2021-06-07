@@ -16,13 +16,14 @@ struct Music: Codable{
     let artist: String
     let rating: Double
     let searchTime: Int
-    
+    let score: Double
     init(snapshot: QueryDocumentSnapshot) {
         name = snapshot.documentID
         var snapshotValue = snapshot.data()
         artist = snapshotValue["artist"] as? String ?? "not found"
         rating = snapshotValue["rating"] as? Double ?? 0
         searchTime = snapshotValue["searchTime"] as? Int ?? 0
+        score = 0.6 * rating + 0.4 * Double(searchTime)
     }
 }
 
@@ -31,7 +32,8 @@ class LeaderBoardCell : UITableViewCell {
     @IBOutlet weak var songName: UILabel!
     @IBOutlet weak var rating: UILabel!
     @IBOutlet weak var searchTime: UILabel!
-    
+    @IBOutlet weak var artist: UILabel!
+    @IBOutlet weak var indexNum: UILabel!
 }
 
 class LeaderBoardSource : NSObject, UITableViewDataSource {
@@ -39,6 +41,8 @@ class LeaderBoardSource : NSObject, UITableViewDataSource {
     public var ratings: [Double] = []
     public var names: [String] = []
     public var searchTimes: [Int] = []
+    public var indexes: [Int] = []
+    public var artists: [String] = []
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return names.count
@@ -49,6 +53,8 @@ class LeaderBoardSource : NSObject, UITableViewDataSource {
         cell.songName?.text = names[indexPath.row]
         cell.rating?.text = String(ratings[indexPath.row])
         cell.searchTime?.text = String(searchTimes[indexPath.row])
+        cell.indexNum?.text = String(indexes[indexPath.row])
+        cell.artist?.text = String(artists[indexPath.row])
         return cell
     }
 }
@@ -83,14 +89,23 @@ class HomeViewController: UIViewController {
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
+                var index = 1;
                 for document in QuerySnapshot!.documents {
                     print("\(document.documentID) => \(document.data())")
                     let musicItem = Music(snapshot: document)
                     self.data.fullData.append(musicItem)
-                    self.data.names.append(musicItem.name)
-                    self.data.ratings.append(musicItem.rating)
-                    self.data.searchTimes.append(musicItem.searchTime)
+                    self.data.indexes.append(index)
+                    index += 1
                     print(self.data.names)
+                }
+                self.data.fullData = self.data.fullData.sorted(by: { $0.score > $1.score })
+                print(self.data.fullData)
+                
+                for music in self.data.fullData {
+                    self.data.names.append(music.name)
+                    self.data.ratings.append(music.rating)
+                    self.data.searchTimes.append(music.searchTime)
+                    self.data.artists.append(music.artist)
                 }
                 self.tableView.reloadData()
             }
