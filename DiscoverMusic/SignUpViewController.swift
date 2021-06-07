@@ -65,10 +65,11 @@ class SignUpViewController: UIViewController {
                     // store the created user in firestore
                     let db = Firestore.firestore()
                     
-                    db.collection("users").addDocument(data: [
+                    db.collection("users").document(result!.user.uid ).setData([
                                                         "fName":firstName,
                                                         "lName":lastName,
-                                                        "uid": result!.user.uid ]) { (error) in
+                                                        "uid": result!.user.uid,
+                                                "cid":[]]) { (error) in
                         
                         if error != nil {
                             // Show error message
