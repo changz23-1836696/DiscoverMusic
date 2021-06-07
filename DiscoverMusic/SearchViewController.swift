@@ -106,7 +106,6 @@ class SearchViewController: UIViewController, UIScrollViewDelegate {
                     print("No comments here")
                 }
                 for document in querySnapshot!.documents {
-                    print("\(document.documentID) => \(document.data())")
                     self.users.append(document.data()["userID"] as! String)
                     self.ratings.append(document.data()["rating"] as! String)
                     self.comments.append(document.data()["comment"] as! String)
@@ -139,9 +138,9 @@ class SearchViewController: UIViewController, UIScrollViewDelegate {
             questionView.song = songs
             questionView.author = authors
             questionView.rating = rating
-            questionView.comments = comments
-            questionView.ratings = ratings
-            questionView.users = users
+//            questionView.comments = comments
+//            questionView.ratings = ratings
+//            questionView.users = users
 //        }
     }
     
