@@ -26,7 +26,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: CommentCell = self.tableView.dequeueReusableCell(withIdentifier: DetailViewController.CELL_STYLE) as! CommentCell
         cell.user?.text = users[indexPath.row]
-        cell.rating?.text = ratings[indexPath.row]
+        cell.rating?.text = ratings[indexPath.row] + " stars"
         cell.comment?.text = comments[indexPath.row]
         return cell
     }
