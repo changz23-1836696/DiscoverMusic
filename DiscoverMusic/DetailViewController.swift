@@ -19,6 +19,11 @@ class CommentCell : UITableViewCell {
 
 class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBAction func play(_ sender: UIButton) {
+        guard let url = URL(string: url) else { return }
+        UIApplication.shared.open(url)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return comments.count
     }
@@ -44,6 +49,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     public var users : [String] = []
     public var ratings : [String] = []
     public var db: Firestore!
+    public var url : String = ""
     static let CELL_STYLE = "commentCellType"
     @IBOutlet weak var tableView: UITableView!
     
