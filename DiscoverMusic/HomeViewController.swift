@@ -10,6 +10,7 @@ import Firebase
 import FirebaseCore
 import FirebaseFirestore
 import FirebaseFirestoreSwift
+import youtube_ios_player_helper
 
 struct Music: Codable{
     let name: String
@@ -72,9 +73,11 @@ class HomeViewController: UIViewController {
     public var db: Firestore!
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var playerView: YTPlayerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        playerView.load(withPlaylistId: "PLO0OHpxWYRp3BclPAa13OsgUt34X4ITlB", playerVars: ["playsinline": 1])
         tableView.dataSource = data
         tableView.delegate = actor
         db = Firestore.firestore()

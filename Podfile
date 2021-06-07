@@ -9,6 +9,8 @@ target 'DiscoverMusic' do
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
   pod 'Firebase/Auth'
+  pod "youtube-ios-player-helper"
+
 
 # add pods for desired Firebase products
 # https://firebase.google.com/docs/ios/setup#available-pods
