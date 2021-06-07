@@ -83,6 +83,14 @@ class HomeViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let searchView = segue.destination as! SearchViewController
+        searchView.musicNames = self.data.names
+        searchView.artists = self.data.artists
+        searchView.ratings2 = self.data.ratings
+        searchView.searchTimes = self.data.searchTimes
+        searchView.indexes = self.data.indexes
+    }
     
     func fetch() {
         db.collectionGroup("MusicCollections").getDocuments() { (QuerySnapshot, err) in
@@ -91,16 +99,12 @@ class HomeViewController: UIViewController {
             } else {
                 var index = 1;
                 for document in QuerySnapshot!.documents {
-                    print("\(document.documentID) => \(document.data())")
                     let musicItem = Music(snapshot: document)
                     self.data.fullData.append(musicItem)
                     self.data.indexes.append(index)
                     index += 1
-                    print(self.data.names)
                 }
                 self.data.fullData = self.data.fullData.sorted(by: { $0.score > $1.score })
-                print(self.data.fullData)
-                
                 for music in self.data.fullData {
                     self.data.names.append(music.name)
                     self.data.ratings.append(music.rating)

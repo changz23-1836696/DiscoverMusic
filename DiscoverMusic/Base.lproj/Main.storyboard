@@ -71,6 +71,7 @@
                                             <outlet property="rating" destination="zL6-u2-1s7" id="lec-Wc-fAh"/>
                                             <outlet property="searchTime" destination="tq0-C8-cW8" id="VDl-xv-jln"/>
                                             <outlet property="songName" destination="8nQ-jq-GtY" id="mYe-bW-2r0"/>
+                                            <segue destination="BYZ-38-t0r" kind="show" id="RLy-3q-2QS"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -93,7 +94,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yLa-ce-k0Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-291.304347826087" y="132.58928571428572"/>
+            <point key="canvasLocation" x="106" y="232"/>
         </scene>
         <!--Detail-->
         <scene sceneID="xDV-HM-jqL">
@@ -174,7 +175,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bOd-C0-yIK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-291.304347826087" y="-520.3125"/>
+            <point key="canvasLocation" x="-219" y="-581"/>
         </scene>
         <!--Rating View Controller-->
         <scene sceneID="EEx-eM-6wv">
@@ -311,7 +312,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Ln-ZY-bXL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="486.95652173913049" y="-520.3125"/>
+            <point key="canvasLocation" x="1300" y="-668"/>
         </scene>
         <!--Profile-->
         <scene sceneID="gbF-18-Cfr">
@@ -398,7 +399,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MF6-yh-ngM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1181" y="-216"/>
+            <point key="canvasLocation" x="-1100" y="-628"/>
         </scene>
         <!--Search-->
         <scene sceneID="tne-QT-ifu">
@@ -450,7 +451,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1933.3333333333335" y="87.723214285714278"/>
+            <point key="canvasLocation" x="-2322" y="436"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="utm-1A-cvc">
@@ -701,7 +702,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="JxP-QN-0zb"/>
+        <segue reference="RLy-3q-2QS"/>
         <segue reference="cKh-jI-bJK"/>
     </inferredMetricsTieBreakers>
     <resources>

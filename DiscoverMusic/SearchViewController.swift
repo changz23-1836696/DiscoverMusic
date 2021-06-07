@@ -39,7 +39,12 @@ class SearchViewController: UIViewController, UIScrollViewDelegate {
     public var comments : [String] = []
     public var ratings : [String] = []
     
-
+    // data from HomeView leaderBoard
+    public var ratings2 : [Double] = []
+    public var artists : [String] = []
+    public var musicNames : [String] = []
+    public var searchTimes : [Int] = []
+    public var indexes : [Int] = []
 
 //    @IBOutlet weak var tableView: UITableView!
 //    @IBOutlet weak var scrollView: UIScrollView!
