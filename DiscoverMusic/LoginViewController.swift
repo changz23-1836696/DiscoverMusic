@@ -53,13 +53,29 @@ class LoginViewController: UIViewController {
                 self.errorMsg.text = error!.localizedDescription
                 self.errorMsg.alpha = 1
             } else {
+                
+                //retrieve user uid and store in shared file
+                let user = Auth.auth().currentUser
+                if let user = user {
+                  // The user's ID, unique to the Firebase project.
+                  // Do NOT use this value to authenticate with your backend server,
+                  // if you have one. Use getTokenWithCompletion:completion: instead.
+                    UserInfo.sharedInstance.uid = user.uid
+                    
+//                  var multiFactorString = "MultiFactor: "
+//                  for info in user.multiFactor.enrolledFactors {
+//                    multiFactorString += info.displayName ?? "[DispayName]"
+//                    multiFactorString += " "
+//                  }
+                  // ...
+                }
            
 //                let profileViewController = self.storyboard?.instantiateViewController(identifier: "profileVC") as? ProfileViewController
 //                UserInfo.sharedInstance.uid = "000000"
 //                self.view.window?.rootViewController = profileViewController
 //                self.view.window?.makeKeyAndVisible()
                 let loggedInViewController = self.storyboard?.instantiateViewController(identifier: "loggedInVC") as? LoggedInViewController
-                UserInfo.sharedInstance.uid = "000000"
+//                UserInfo.sharedInstance.uid = user!.uid
                 self.view.window?.rootViewController = loggedInViewController
                 self.view.window?.makeKeyAndVisible()
             }
