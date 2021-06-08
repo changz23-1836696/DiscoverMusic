@@ -46,7 +46,8 @@ class SearchViewController: UIViewController, UIScrollViewDelegate {
     public var musicNames : [String] = []
     public var searchTimes : [Int] = []
     public var indexes : [Int] = []
-
+    public var home: HomeViewController!
+    
 //    @IBOutlet weak var tableView: UITableView!
 //    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var searchBar: UITextField!
@@ -90,13 +91,17 @@ class SearchViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func fetchData(_ fetchString: String) {
-        db.collection("MusicCollections").document(fetchString).getDocument { (querySnapshot, err) in
+        if (fetchString == "") {
+            return
+        }
+        db.collection("MusicCollections").document(fetchString).getDocument { [self] (querySnapshot, err) in
             if let document = querySnapshot, document.exists {
                 self.songs = (document.documentID)
                 self.authors = (document.data()?["artist"] as! String)
                 self.rating = (document.data()?["rating"] as! UInt)
                 self.searchTime = (document.data()?["searchTime"] as! UInt)
                 self.url = document.data()?["url"] as! String
+                home.increaseSearchTime(musicName: fetchString)
             } else {
                 self.alertMessage(mess: "Song not found")
                 }
@@ -105,7 +110,7 @@ class SearchViewController: UIViewController, UIScrollViewDelegate {
     
     func fetchComment(fetchString: String) {
         print(fetchString)
-        db.collection("CommentHistory").whereField("musicID", isEqualTo: fetchString).getDocuments{ (querySnapshot, err) in
+        db.collection("CommentHistory").whereField("musicID", isEqualTo: fetchString).getDocuments{ [self] (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
