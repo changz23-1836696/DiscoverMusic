@@ -30,7 +30,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: CommentCell = self.tableView.dequeueReusableCell(withIdentifier: DetailViewController.CELL_STYLE) as! CommentCell
-        cell.user?.text = users[indexPath.row]
+        cell.user?.text = firstNames[indexPath.row]
         cell.rating?.text = ratings[indexPath.row] + " stars"
         cell.comment?.text = comments[indexPath.row]
         return cell
@@ -48,6 +48,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     public var comments : [String] = []
     public var users : [String] = []
     public var ratings : [String] = []
+    public var firstNames: [String] = []
     public var db: Firestore!
     public var url : String = ""
     static let CELL_STYLE = "commentCellType"
@@ -56,21 +57,32 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func fetchData() {
         print(song)
-        db.collection("CommentHistory").whereField("musicID", isEqualTo: String(song)).getDocuments{ (querySnapshot, err) in
+        db.collection("CommentHistory").whereField("musicID", isEqualTo: String(song)).getDocuments{ [self] (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
-                    print(querySnapshot!.documents)
-                    self.users.append(document.data()["userID"] as! String)
-                    self.ratings.append(document.data()["rating"] as! String)
-                    self.comments.append(document.data()["comment"] as! String)
-                }
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
+                    //print(querySnapshot!.documents)
+                    var fname: String = "guest"
+                    db.collection("users").whereField("uid", isEqualTo: document.data()["userID"] as! String)
+                        .getDocuments() { (QuerySnapshot, err) in
+                            if let err = err {
+                                print("Error getting documents: \(err)")
+                            } else {
+                                for doc in QuerySnapshot!.documents {
+                                    fname = doc.data()["fName"] as! String
+                                }
+                            }
+                            self.firstNames.append(fname)
+                            self.ratings.append(document.data()["rating"] as! String)
+                            self.comments.append(document.data()["comment"] as! String)
+                            DispatchQueue.main.async {
+                                self.tableView.reloadData()
+                            }
+                    }
                 }
             }
-    }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
