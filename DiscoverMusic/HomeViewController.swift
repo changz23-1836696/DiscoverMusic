@@ -52,8 +52,8 @@ class LeaderBoardSource : NSObject, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : LeaderBoardCell = tableView.dequeueReusableCell(withIdentifier: HomeViewController.CELL_STYLE, for: indexPath) as! LeaderBoardCell
         cell.songName?.text = names[indexPath.row]
-        cell.rating?.text = String(ratings[indexPath.row])
-        cell.searchTime?.text = String(searchTimes[indexPath.row])
+        cell.rating?.text = "Rating: " + String(ratings[indexPath.row])
+        cell.searchTime?.text = "Search Time: " + String(searchTimes[indexPath.row])
         cell.indexNum?.text = String(indexes[indexPath.row])
         cell.artist?.text = String(artists[indexPath.row])
         return cell
