@@ -63,6 +63,13 @@ class RatingViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "rateToDetail" {
+            let vc = segue.destination as! DetailViewController
+            vc.song = self.musicID
+        }
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

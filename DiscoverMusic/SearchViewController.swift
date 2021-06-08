@@ -38,8 +38,14 @@ class SearchViewController: UIViewController, UIScrollViewDelegate {
     public var users : [String] = []
     public var comments : [String] = []
     public var ratings : [String] = []
+    public var url : String = ""
     
-
+    // data from HomeView leaderBoard
+    public var ratings2 : [Double] = []
+    public var artists : [String] = []
+    public var musicNames : [String] = []
+    public var searchTimes : [Int] = []
+    public var indexes : [Int] = []
 
 //    @IBOutlet weak var tableView: UITableView!
 //    @IBOutlet weak var scrollView: UIScrollView!
@@ -90,6 +96,7 @@ class SearchViewController: UIViewController, UIScrollViewDelegate {
                 self.authors = (document.data()?["artist"] as! String)
                 self.rating = (document.data()?["rating"] as! UInt)
                 self.searchTime = (document.data()?["searchTime"] as! UInt)
+                self.url = document.data()?["url"] as! String
             } else {
                 self.alertMessage(mess: "Song not found")
                 }
@@ -106,7 +113,6 @@ class SearchViewController: UIViewController, UIScrollViewDelegate {
                     print("No comments here")
                 }
                 for document in querySnapshot!.documents {
-                    print("\(document.documentID) => \(document.data())")
                     self.users.append(document.data()["userID"] as! String)
                     self.ratings.append(document.data()["rating"] as! String)
                     self.comments.append(document.data()["comment"] as! String)
@@ -139,9 +145,10 @@ class SearchViewController: UIViewController, UIScrollViewDelegate {
             questionView.song = songs
             questionView.author = authors
             questionView.rating = rating
-            questionView.comments = comments
-            questionView.ratings = ratings
-            questionView.users = users
+        questionView.url = url
+//            questionView.comments = comments
+//            questionView.ratings = ratings
+//            questionView.users = users
 //        }
     }
     
@@ -152,7 +159,7 @@ class SearchViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-
+        url = ""
         songs = ""
         authors = ""
         rating = 0

@@ -19,6 +19,11 @@ class CommentCell : UITableViewCell {
 
 class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBAction func play(_ sender: UIButton) {
+        guard let url = URL(string: url) else { return }
+        UIApplication.shared.open(url)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return comments.count
     }
@@ -44,22 +49,29 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     public var users : [String] = []
     public var ratings : [String] = []
     public var db: Firestore!
+    public var url : String = ""
     static let CELL_STYLE = "commentCellType"
     @IBOutlet weak var tableView: UITableView!
     
     
-//    func fetchData() {
-//        print(song)
-//        db.collection("CommentHistory").whereField("musicID", isEqualTo: String(song)).getDocuments{ (querySnapshot, err) in
-//            if let err = err {
-//                print("Error getting documents: \(err)")
-//            } else {
-//                for document in querySnapshot!.documents {
-//                    print("\(document.documentID) => \(document.data())")
-//                }
-//            }
-//    }
-//    }
+    func fetchData() {
+        print(song)
+        db.collection("CommentHistory").whereField("musicID", isEqualTo: String(song)).getDocuments{ (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    print(querySnapshot!.documents)
+                    self.users.append(document.data()["userID"] as! String)
+                    self.ratings.append(document.data()["rating"] as! String)
+                    self.comments.append(document.data()["comment"] as! String)
+                }
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+    }
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goRating" {
@@ -75,13 +87,13 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-//        fetchData()
         self.tableView.register(UINib(nibName: "CommentCell", bundle: nil), forCellReuseIdentifier: "CommentCell")
         tableView.dataSource = self
         tableView.delegate = self
         let settings = FirestoreSettings()
         Firestore.firestore().settings = settings
         db = Firestore.firestore()
+        fetchData()
     }
 
 
