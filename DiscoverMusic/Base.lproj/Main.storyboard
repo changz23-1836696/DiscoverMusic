@@ -625,8 +625,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DSg-yV-flR">
-                                <rect key="frame" x="128.5" y="767" width="157" height="30"/>
-                                <state key="normal" title="Back button for testing"/>
+                                <rect key="frame" x="190" y="767" width="34" height="30"/>
+                                <state key="normal" title="Back"/>
                                 <connections>
                                     <segue destination="rc2-iT-pCJ" kind="show" id="yYS-qr-n7i"/>
                                 </connections>
@@ -647,10 +647,10 @@
                                 <rect key="frame" x="64" y="228" width="286" height="440"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="67" id="lri-jJ-wcy">
-                                        <rect key="frame" x="0.0" y="24.5" width="287" height="67"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="commentHistoryTC" rowHeight="67" id="lri-jJ-wcy" customClass="CommentHistoryCell" customModule="DiscoverMusic" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="286" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lri-jJ-wcy" id="Am3-cb-7PZ" customClass="CommentHistoryCell">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lri-jJ-wcy" id="Am3-cb-7PZ">
                                             <rect key="frame" x="0.0" y="0.0" width="286" height="67"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -660,11 +660,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="comment of this song from this user" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mCI-Uy-APA">
-                                                    <rect key="frame" x="133" y="11" width="146" height="45"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="146" id="tq2-5C-w0N"/>
-                                                    </constraints>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="comment of this song from this user" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mCI-Uy-APA">
+                                                    <rect key="frame" x="133" y="11" width="275" height="45"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -680,7 +677,7 @@
                                                         <action selector="buttonTapped:" destination="uxx-ur-J7U" eventType="touchUpInside" id="EJb-TK-WBp"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VUC-dm-FQq">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VUC-dm-FQq">
                                                     <rect key="frame" x="42" y="36" width="49" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -696,16 +693,16 @@
                                                 <constraint firstItem="sey-WU-aAS" firstAttribute="centerY" secondItem="VUC-dm-FQq" secondAttribute="centerY" id="O8w-KO-mmW"/>
                                                 <constraint firstItem="mCI-Uy-APA" firstAttribute="leading" secondItem="VUC-dm-FQq" secondAttribute="trailing" constant="42" id="PyZ-KN-IzB"/>
                                                 <constraint firstItem="sey-WU-aAS" firstAttribute="firstBaseline" secondItem="mCI-Uy-APA" secondAttribute="baseline" id="TuV-gx-BD4"/>
-                                                <constraint firstItem="VUC-dm-FQq" firstAttribute="leading" secondItem="sey-WU-aAS" secondAttribute="trailing" constant="8" id="ffo-Ma-Obm"/>
+                                                <constraint firstItem="VUC-dm-FQq" firstAttribute="leading" secondItem="sey-WU-aAS" secondAttribute="trailing" constant="-4" id="ffo-Ma-Obm"/>
                                                 <constraint firstItem="sey-WU-aAS" firstAttribute="bottom" secondItem="Am3-cb-7PZ" secondAttribute="bottomMargin" id="oj6-bw-W91"/>
                                                 <constraint firstItem="mCI-Uy-APA" firstAttribute="top" secondItem="Am3-cb-7PZ" secondAttribute="topMargin" id="rfe-IA-VMe"/>
                                                 <constraint firstItem="sey-WU-aAS" firstAttribute="bottom" secondItem="mCI-Uy-APA" secondAttribute="bottom" id="tWD-xE-5ov"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="commentLabel" destination="mCI-Uy-APA" id="8rZ-ty-WOC"/>
-                                            <outlet property="ratingLabel" destination="VUC-dm-FQq" id="din-Mw-kTC"/>
-                                            <outlet property="songLabel" destination="MZg-FL-Bgl" id="yAP-x9-26R"/>
+                                            <outlet property="commentLabel" destination="mCI-Uy-APA" id="XoE-Oz-lGu"/>
+                                            <outlet property="ratingLabel" destination="VUC-dm-FQq" id="ooO-yz-Eya"/>
+                                            <outlet property="songLabel" destination="MZg-FL-Bgl" id="9FF-9r-cra"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
