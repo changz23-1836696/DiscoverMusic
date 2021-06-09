@@ -16,7 +16,7 @@ struct Music: Codable{
     let name: String
     let artist: String
     let rating: Double
-    var searchTime: Int
+    let searchTime: Int
     let score: Double
     init(snapshot: QueryDocumentSnapshot) {
         name = snapshot.documentID
@@ -68,7 +68,7 @@ class LeaderBoardSelector: NSObject, UITableViewDelegate {
 
 class HomeViewController: UIViewController {
     static let CELL_STYLE = "musicCell"
-    public var data = LeaderBoardSource()
+    var data = LeaderBoardSource()
     let actor = LeaderBoardSelector()
     public var db: Firestore!
     
@@ -93,20 +93,6 @@ class HomeViewController: UIViewController {
         searchView.ratings2 = self.data.ratings
         searchView.searchTimes = self.data.searchTimes
         searchView.indexes = self.data.indexes
-        searchView.home = self
-    }
-    
-    func increaseSearchTime(musicName: String) {
-        var search = 0
-        for music in self.data.fullData {
-            if (music.name == musicName) {
-                search = music.searchTime + 1
-            }
-        }
-        db.collection("MusicCollections").document(musicName)
-               .updateData(["searchTime": search])
-        print(search)
-        fetch()
     }
     
     func fetch() {
@@ -114,13 +100,6 @@ class HomeViewController: UIViewController {
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
-                self.data.fullData = []
-                self.data.artists = []
-                self.data.indexes = []
-                self.data.names = []
-                self.data.artists = []
-                self.data.searchTimes = []
-                self.data.ratings = []
                 var index = 1;
                 for document in QuerySnapshot!.documents {
                     let musicItem = Music(snapshot: document)
@@ -135,7 +114,6 @@ class HomeViewController: UIViewController {
                     self.data.searchTimes.append(music.searchTime)
                     self.data.artists.append(music.artist)
                 }
-                print("reload")
                 self.tableView.reloadData()
             }
         }
